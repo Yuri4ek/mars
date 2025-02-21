@@ -239,5 +239,40 @@ def load_image():
                                 </html>'''
 
 
+@app.route('/')
+@app.route('/carousel')
+def pepe():
+    return f'''<!doctype html>
+                    <html lang="en">
+                      <head>
+                        <meta charset="utf-8">
+                        <link rel="stylesheet" 
+                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+                        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+                        crossorigin="anonymous">
+                        <title>Привет, Марс!</title>
+                      </head>
+                      <body>
+                        <h1>Пейзажи марса!!!!!!!!!</h1>
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img src="
+{url_for('static', filename='img/pepe1.png')}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item active">
+                              <img src="
+{url_for('static', filename='img/pepe2.png')}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="
+{url_for('static', filename='img/pepe3.png')}" class="d-block w-100" alt="...">
+                            </div>
+                          </div>
+                        </div>
+                      </body>
+                    </html>'''
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host='127.0.0.1')
