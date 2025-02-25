@@ -11,9 +11,15 @@ def main():
 @app.route('/')
 @app.route('/index/<title>')
 def index(title):
-    user = "Ученик Яндекс.Лицея"
     return render_template('base.html',
                            title=title)
+
+
+@app.route('/')
+@app.route('/training/<prof>')
+def training(prof):
+    return render_template('training.html',
+                           title=prof)
 
 
 if __name__ == '__main__':
