@@ -22,5 +22,13 @@ def training(prof):
                            title=prof)
 
 
+@app.route('/')
+@app.route('/list_prof/<key>')
+def list_prof(key):
+    list_prof = ['цветоед', 'инженер', 'строитель', 'врач', 'магистр']
+    return render_template('list_prof.html',
+                           title=key, list_prof=list_prof)
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host='127.0.0.1')
