@@ -1,5 +1,9 @@
+h4 {
+    color: #A9A9A9;
+    margin-left: 20px;
+}
 h1 {
-   color: #d22e3a
+   color: #d22e3a;
 }
 form.login_form {
     margin-left: auto;

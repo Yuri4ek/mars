@@ -30,5 +30,35 @@ def list_prof(key):
                            title=key, list_prof=list_prof)
 
 
+@app.route('/')
+@app.route('/answer')
+def answer():
+    data = {'title': 'Анкета',
+            'surname': 'Pedrov',
+            'name': 'Mark',
+            'education': 'Выше Высокого',
+            'profession': 'Врач',
+            'sex': 'male',
+            'motivation': 'Захотел',
+            'ready': 'Всегда'}
+    return render_template('auto_answer.html',
+                           data=data)
+
+
+@app.route('/')
+@app.route('/auto_answer')
+def auto_answer():
+    data = {'title': 'Анкета',
+            'surname': 'Петров',
+            'name': 'Маркс',
+            'education': 'Выше среднего',
+            'profession': 'Глав Врач',
+            'sex': 'male',
+            'motivation': 'Захотел и захотел',
+            'ready': 'Всегда и никогда'}
+    return render_template('auto_answer.html',
+                           data=data)
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host='127.0.0.1')
