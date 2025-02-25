@@ -1,6 +1,10 @@
-from flask import Flask, url_for, request, render_template
+from flask import Flask, url_for, request, render_template, redirect
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 @app.route('/')
@@ -15,14 +19,12 @@ def index(title):
                            title=title)
 
 
-@app.route('/')
 @app.route('/training/<prof>')
 def training(prof):
     return render_template('training.html',
                            title=prof)
 
 
-@app.route('/')
 @app.route('/list_prof/<key>')
 def list_prof(key):
     list_prof = ['цветоед', 'инженер', 'строитель', 'врач', 'магистр']
@@ -30,7 +32,6 @@ def list_prof(key):
                            title=key, list_prof=list_prof)
 
 
-@app.route('/')
 @app.route('/answer')
 def answer():
     data = {'title': 'Анкета',
@@ -58,6 +59,22 @@ def auto_answer():
             'ready': 'Всегда и никогда'}
     return render_template('auto_answer.html',
                            data=data)
+
+
+class LoginForm(FlaskForm):
+    aid = StringField('id астронавта', validators=[DataRequired()])
+    apassword = PasswordField('Пароль астронавта', validators=[DataRequired()])
+    kid = StringField('id капитана', validators=[DataRequired()])
+    kpassword = PasswordField('Пароль капитана', validators=[DataRequired()])
+    submit = SubmitField('Доступ')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('login.html', title='Авторизация', form=form)
 
 
 if __name__ == '__main__':
