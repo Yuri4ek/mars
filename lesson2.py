@@ -12,7 +12,6 @@ def main():
     return "Миссия Колонизация Марса"
 
 
-@app.route('/')
 @app.route('/index/<title>')
 def index(title):
     return render_template('base.html',
@@ -46,7 +45,6 @@ def answer():
                            data=data)
 
 
-@app.route('/')
 @app.route('/auto_answer')
 def auto_answer():
     data = {'title': 'Анкета',
@@ -75,6 +73,14 @@ def login():
     if form.validate_on_submit():
         return redirect('/success')
     return render_template('login.html', title='Авторизация', form=form)
+
+
+@app.route('/')
+@app.route('/distribution')
+def distribution():
+    data = ['Mike', 'Юра Борисов', 'Jason Statham', 'Я']
+    return render_template('distribution.html',
+                           data=data)
 
 
 if __name__ == '__main__':
