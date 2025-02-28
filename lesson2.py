@@ -75,12 +75,18 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@app.route('/')
 @app.route('/distribution')
 def distribution():
     data = ['Mike', 'Юра Борисов', 'Jason Statham', 'Я']
     return render_template('distribution.html',
                            data=data)
+
+
+@app.route('/table/<sex>/<year>')
+def room(sex, year):
+    year = int(year)
+    return render_template('room.html',
+                           sex=sex, year=year)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<h1>Миссия колонизации Марса</h1>
+<h4>И на Марсе будут яблони цвести!</h4>
+
+<div class="content-gray">Цвет стен</div>
+<div class="content">Эмблема</div>
+<table cellpadding="10" cellspacing="">
+    <tr>
+        <td bgcolor="grey">Цвет стен</td>
+        <td bgcolor="grey">Эмблема</td>
+    </tr>
+    {% if sex == 'male' and year < 21 %}
+    <tr>
+        <td><img
+                src="https://baldezh.top/uploads/posts/2021-04/1618536114_51-funart_pro-p-oboi-fon-goluboi-tsvet-odnotonnii-53.jpg" alt="Test" width="100"
+                 height="100"></td>
+        <td><img src="https://img.freepik.com/free-photo/thoughtful-teenage-guy-thinking-problem_1262-18118.jpg" width="100" height="100"></td>
+    </tr>
+    {% elif sex == 'male' and year >= 21 %}
+    <tr>
+        <td><img
+                src="https://yandex-images.clstorage.net/iEG501u89/3fbc48c_-vy0/71FUNWTtQORT6vY7gz2G7rd0N61-s4K6uAAUdLPf9Kp6fkSVN1OlHov9L1tONwSKuwZvVb4EMEbeyhIHHk-oodtUUDCAnUC1F1pS-iP8h7p2oAb5XyPCzyjFQsJU3YMcHf1TMlX0VNv-XU8a_7MQ7DjHHkKJVOMD_gpBsPiYbxd9k-SEAS0jlaYoJLgCXLZoF3bl-6zW0RtesiGyJY_hnW_88JKHllXZfc8c2yviY5zKoX-w-nZQUX-JsvGrSj22jNLnp3AcEwZlizTbU-xFi_UGNYu9VyG57XNxciYN4e69_QOQtUXWCr7ePDloELFOq3IcAFmkEhL-muHhGppdVu8TZlZwfXJnRqmUmVJNhgsXZTdLnmdw6-xCYyHXbUC9X09zspf2FTvNrd-Ji8Cz7VoBX2O6RzESznthoZmprRVvAZREst3DxeaoRrtAXHeZZQXGaBxkQHieUuAiJ_yDTQ-8sbLGx5davE1827vxIK0qYf3gW2dBM78JQELKO31GPQOnxwNP4NQnGnaLcn7n2ObEJFvOB-K4vqEhcvbvED3OfQCjFwQmSV_dHSnLAxHOyHJvgXkWgoLcy3CRm6j_J84Ad2bw7NOkJ6sWisLvJSlWFkRZDwXzO--SQSAlXzHsrD3QwafnF5jd3j-oWUIDXbij75AKtuCBXJrC4ulqLqQ9EmS2sS-ihke451nATMX59PcUS77mYqvPoIIh5v6zjP4vQfAFleearl2dOapiQf06oE-TeiXwo-3b8hH6mG82TyLEV3GtIDclO8baESy0ycYWJdvPt2AbvcCTsUddQQxMbxPBR0U2aJ6v_msqwTC86hEMImpWgWFceHPDW4v89twBtwbBfdD1hpskWbEexQh2t0VqLDdBe7xAU9K2nxEfX41BIQWFNzpODo1o2bMhbpnTDUP4BqFxzmvyQMvrn0bPQlV3MX-zJle65TvzjlQIReSky_zEYYh_8IATI" width="100" height="100" ></td>
+        <td><img src="https://c1.35photo.pro/photos_temp/sizes/516/2584035_800n.jpg" width="100" height="100"></td>
+    </tr>
+    {% elif sex == 'female' and year < 21 %}
+    <tr>
+        <td><img
+                src="https://images.wallpaperscraft.com/image/single/orange_white_solid_65839_1920x1080.jpg" width="100" height="100"></td>
+        <td><img src="https://img.freepik.com/free-photo/thoughtful-teenage-guy-thinking-problem_1262-18118.jpg" width="100" height="100"></td>
+    </tr>
+    {% elif sex == 'female' and year >= 21 %}
+    <tr>
+        <td><img src="https://i.ytimg.com/vi/r6-MZFQbO_M/maxresdefault.jpg" width="100" height="100"></td>
+        <td><img src="https://c1.35photo.pro/photos_temp/sizes/516/2584035_800n.jpg" width="100" height="100"></td>
+    </tr>
+    {% endif %}
+</table>
+</body>
+</html>
