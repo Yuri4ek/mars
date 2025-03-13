@@ -2,6 +2,7 @@ import sqlalchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from .db_session import SqlAlchemyBase
 from flask_login import UserMixin
+from sqlalchemy import orm
 
 
 class User(SqlAlchemyBase, UserMixin):
@@ -18,6 +19,7 @@ class User(SqlAlchemyBase, UserMixin):
     email = sqlalchemy.Column(sqlalchemy.String, nullable=True, unique=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     modified_date = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    news = orm.relationship("Jobs", back_populates='user')
 
     def __str__(self):
         return f"{self.name}, {self.email}"
