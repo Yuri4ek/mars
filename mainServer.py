@@ -40,7 +40,7 @@ def edit_jobs(id):
     if request.method == "GET":
         db_sess = db_session.create_session()
         jobs = db_sess.query(Jobs).filter(Jobs.id == id,
-                                          Jobs.team_leader == current_user
+                                          Jobs.user == current_user
                                           ).first()
         if jobs:
             jobs.job = form.job.data
@@ -53,7 +53,7 @@ def edit_jobs(id):
     if form.validate_on_submit():
         db_sess = db_session.create_session()
         jobs = db_sess.query(Jobs).filter(Jobs.id == id,
-                                          Jobs.team_leader == current_user
+                                          Jobs.user == current_user
                                           ).first()
         if jobs:
             jobs.job = form.job.data
@@ -76,7 +76,7 @@ def edit_jobs(id):
 def jobs_delete(id):
     db_sess = db_session.create_session()
     jobs = db_sess.query(Jobs).filter(Jobs.id == id,
-                                      Jobs.team_leader == current_user
+                                      Jobs.user == current_user
                                       ).first()
     if jobs:
         db_sess.delete(jobs)
