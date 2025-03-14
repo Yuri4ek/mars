@@ -40,7 +40,8 @@ def edit_jobs(id):
     if request.method == "GET":
         db_sess = db_session.create_session()
         jobs = db_sess.query(Jobs).filter(Jobs.id == id,
-                                          Jobs.user == current_user
+                                          (Jobs.user == current_user) |
+                                          (current_user.id == 1)
                                           ).first()
         if jobs:
             jobs.job = form.job.data
@@ -53,7 +54,8 @@ def edit_jobs(id):
     if form.validate_on_submit():
         db_sess = db_session.create_session()
         jobs = db_sess.query(Jobs).filter(Jobs.id == id,
-                                          Jobs.user == current_user
+                                          (Jobs.user == current_user) |
+                                          (current_user.id == 1)
                                           ).first()
         if jobs:
             jobs.job = form.job.data
@@ -76,7 +78,8 @@ def edit_jobs(id):
 def jobs_delete(id):
     db_sess = db_session.create_session()
     jobs = db_sess.query(Jobs).filter(Jobs.id == id,
-                                      Jobs.user == current_user
+                                      (Jobs.user == current_user) |
+                                      (current_user.id == 1)
                                       ).first()
     if jobs:
         db_sess.delete(jobs)
@@ -150,7 +153,7 @@ def login():
 
 def main():
     db_session.global_init("db/blogs.db")
-    app.run()
+    app.run(debug=True, port=8080, host='127.0.0.1')
 
 
 @app.route("/")
@@ -165,4 +168,3 @@ def index():
 
 if __name__ == '__main__':
     main()
-    app.run(debug=True, port=8080, host='127.0.0.1')
