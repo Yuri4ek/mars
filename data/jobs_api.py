@@ -52,6 +52,7 @@ def create_jobs():
     jobs = Jobs(
         job=request.json['job'],
         work_size=request.json['work_size'],
+        team_leader=request.json['team_leader'],
         collaborators=request.json['collaborators'],
         is_finished=request.json['is_finished']
     )
