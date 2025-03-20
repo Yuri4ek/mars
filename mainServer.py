@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, redirect, abort
+from flask import (Flask, request, render_template, redirect, abort,
+                   make_response, jsonify)
 from flask_login import LoginManager, login_user, login_required, logout_user, \
     current_user
 from data import db_session, jobs_api
@@ -42,7 +43,8 @@ def add_departaments():
         db_sess.merge(current_user)
         db_sess.commit()
         return redirect('/departamentsDisplay')
-    return render_template('departaments.html', title='Добавление департамента',
+    return render_template('departaments.html',
+                           title='Добавление департамента',
                            form=form
                            )
 
@@ -257,6 +259,16 @@ def index():
     else:
         jobs = []
     return render_template("index.html", jobs=jobs)
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
+
+
+@app.errorhandler(400)
+def bad_request(_):
+    return make_response(jsonify({'error': 'Bad Request'}), 400)
 
 
 if __name__ == '__main__':
